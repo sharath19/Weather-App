@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+    <head>
+        <title>angular</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+        <script type="text/javascript" src="js/controller.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/stylesheet.css" type="text/css" /> 
+       
+    </head>
+    <body>
+
+    <div class="container">
+        <div class="row row-centered">
+            <div class="col-sm-12 col-md-offset-3">
+                 <form ng-submit="submit()" ng-controller="Rendersdata">
+                    <div class="col-sm-12 col-centered">
+                            <label col-md-4 for=""><h1>Search By City Name</h1> 
+                            <input type="text" ng-model="text" name="text" placeholder="Search By City Name"  class="form-control" id="search-box"/>
+                            </label>
+                            <input type="submit" id="submit" value="Submit" onClick='timeFunction()' class="btn btn-primary" />
+                                <h3>
+                                    <table>
+                                        <tr>
+                                            <td>City Name</td>
+                                            <td>: {{weather.name}} </td> 
+                                        </tr>
+                                         <tr>
+                                            <td>Local Time</td>
+                                            <td>:<span id='current-time1'></span></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Sun Rise</td>
+                                            <td><mydate>: {{weather.sys.sunrise  * 1000 | date:'HH:mm:ss Z'}}</mydate></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Sun Set</td>
+                                            <td><mydate>: {{weather.sys.sunset  * 1000 | date:'HH:mm:ss Z'}}</mydate></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Temperature</td>
+                                            <td>: {{(((weather.main.temp)*(9/5))-459.67) | number:2}} F</td>
+                                        </tr>
+                                         <tr>
+                                            <td>Humidity</td>
+                                            <td>: {{weather.main.humidity}} %</td>
+                                        </tr>
+                                    </table>
+                                 </h3>
+                     </div>    
+                 </form>
+              </div>
+         </div>  
+    </div>
+ 
+      <script type="text/javascript">
+
+      function timeFunction() {
+        setInterval(currentTime,1000);
+      }
+      
+      function currentTime() {
+        
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+ 
+          document.getElementById('current-time1').innerHTML = hours + ':' + minutes + ':' + seconds ;
+
+        }
+      </script>  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </body>
+</html>
