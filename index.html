@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script type="text/javascript" src="js/d3.min.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
+  
   </head>
-<body ng-controller="Rendersdata">
-  <div class="container">
+<body>
+  <div class="container" ng-controller="Rendersdata">
     <div class="row row-centered">
       <div class="col-sm-12 col-md-offset-3">
         <form ng-submit="submit()" >
@@ -17,7 +19,7 @@
             <label col-md-4 for=""><h1>Search By City Name</h1> 
             <input type="text" ng-model="text" name="text" placeholder="Search By City Name"  class="form-control" id="search-box"/>
             </label>
-            <input type="submit" id="submit" value="Submit" onClick='timeFunction()' class="btn btn-primary" />
+            <input type="submit" id="submit" value="Submit" class="btn btn-primary" />
             <h3>
               <table>
                 <tr>
@@ -55,20 +57,11 @@
       </div>
     </div>  
   </div>
-<script type="text/javascript">
+  <div class="container">
+    <h2>16 Days weather for current location</h2>
+    <div id="chart"></div>
 
-function timeFunction() {
-  setInterval(currentTime,1000);
-}
-timeFunction();
 
-function currentTime() {
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  document.getElementById('current-time1').innerHTML = hours + ':' + minutes + ':' + seconds ;
-}
-</script>  
+  </div>
 </body>
 </html>
