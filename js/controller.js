@@ -142,9 +142,7 @@ myApp.controller('Rendersdata', function renderdata($scope,$http,$log){
 			        .style({ stroke: "#000"
 			    })
 
-			for(var j=0; j<bardata.length; j++) {
-			bardata.pop();
-			}
+			 bardata = [];
 		}
 	)}
 });
